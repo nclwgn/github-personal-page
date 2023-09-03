@@ -17,6 +17,7 @@ jobs:
         with:
           repository: nclwgn/loconotion
           path: loconotion
+
       - name: Checkout this repo
         uses: actions/checkout@v2
         with:
@@ -24,7 +25,7 @@ jobs:
 
       - name: Build Loconotion docker image
         run: docker-compose build loconotion
-        working-directory: loconotion
+        working-directory: pages_repo
         
       - name: Run Loconotion
         run: |
@@ -32,7 +33,8 @@ jobs:
           -v "$GITHUB_WORKSPACE/pages_repo/dist:/app/loconotion/dist" \
           -v "$GITHUB_WORKSPACE/pages_repo/site.toml:/app/loconotion/site.toml" \
           loconotion "site.toml"
-        working-directory: loconotion
+        working-directory: pages_repo
+
       - name: Push to GitHub pages
         run: |
           git config --global user.name "github-actions[bot]"
