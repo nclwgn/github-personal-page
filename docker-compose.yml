@@ -4,7 +4,7 @@ services:
   loconotion:
     build:
       context: ../loconotion
-      dockerfile: docker/Dockerfile
+      dockerfile: ../github-personal-page/docker/Dockerfile
     image: loconotion:latest
     volumes:
       - ${LOCONOTION_LOCAL_DIST:-/tmp/}:/app/loconotion/dist
